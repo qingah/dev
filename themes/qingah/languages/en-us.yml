@@ -1,0 +1,27 @@
+index:
+  title: QinGah Developer Community 
+
+menu:
+  home: Home
+  guidelines: Swap Guides
+  api: Manual
+  community: Community
+
+submenu:
+  introduction: Introduction
+  start: Quick Start
+  tutorials: Guides
+  economic: Contact API
+  security: Access Guide
+
+main:
+  title: QinGah Developer Community
+  text: QinGah Swap + AMM privacy exchange calculation based on ZK rollups.
+  uibutton: UI Design
+
+content:
+  rpc: RPC API
+
+footer:
+  contact: Contact Us
+  text: QinGah Developer Community

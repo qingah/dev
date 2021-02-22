@@ -1,0 +1,17 @@
+site_description: "QinGah Swap 基于ZK-Rollups的Swap+AMM隐私兑换计算DApp"
+# google_analytics: 
+root_domain: dev.qingah.com
+# vue_version: 2.5.16
+
+special_sponsors:
+  - url: https://code.xyz/
+    img: codexyz.png
+    description: Build APIs in Your Web Browser
+
+platinum_sponsors:
+  - url: https://www.bitsrc.io
+    img: bit-wide.png
+    alt_img: bit.png
+  # - url: http://tooltwist.com/
+  #   img: tooltwist.png
+  #   name: tooltwist

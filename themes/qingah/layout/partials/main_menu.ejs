@@ -1,0 +1,20 @@
+<!-- <li>
+  <form id="search-form">
+    <input type="text" id="search-query-<%- context %>" class="search-query st-default-search-input">
+  </form>
+</li> -->
+<li>
+  <a href="<%- url_for_lang("/") %>" class="nav-link contribute"><%= __('menu.home') %></a>
+</li>
+<%- partial('partials/learn_dropdown') %>
+<%- partial('partials/api_dropdown') %>
+<!-- <li>
+  <a href="<%- url_for("/api/technology/index.html") %>" class="nav-link team<%- page.path.match(/\/(technology)(\/|$)/) ? ' current' : '' %>">技术手册</a>
+</li> -->
+<li>
+  <a href="https://wallet.qingah.com/" class="nav-link contribute " target="_blank">Wallet</a>
+</li>
+<li>
+  <a href="http://qingah.com/" class="nav-link contribute" target="_blank">Website</a>
+</li>
+<%- partial('partials/language_dropdown') %>

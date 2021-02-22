@@ -1,0 +1,94 @@
+<div class="sidebar">
+  <div class="sidebar-inner-index">
+    <ul class="main-menu">
+      <%- partial('partials/main_menu', { context: 'sidebar' }) %>
+    </ul>
+  </div>
+</div>
+
+
+<div id="hero">
+  <div class="inner">
+    <h1><%= __('main.title') %></h1>
+    <p class="introduce">
+      <%= __('main.text') %>
+    </p>
+    <p class="start">
+      <a class="button white" href="<%- url_for_lang("/ui/introduction.html") %>"><%= __('main.uibutton') %></a>
+      <a class="button gray has-icon" href="https://github.com/qingah" target="_blank">
+        <%- partial('icons/github-dark') %>
+        GITHUB</a>
+    </p>
+  </div>
+</div>
+
+
+<div id="footer">
+  <div class="social-icon">
+    <div>
+      <!-- <p>
+        <img class="downicon" src="<%- url_for("/images/qingah_icon.png") %>" alt="Developer logo">
+      </p> -->
+      <p class="foot-text"><%= __('footer.text') %></p>
+    </div>
+    <% if (page.lang === 'zh-cn') { %>
+    <div>
+      <p class="foot-contact"><%= __('footer.contact') %></p>
+      <ul>
+        <li>
+          <a href="javascript:void(0)" class="qrcode">
+            <img class="hero-logo" src="<%- url_for("/images/Shape.png") %>">
+            <img class="qrcodeImg" src="<%- url_for("/images/qrcode.jpg") %>">
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/qingah" target="_blank">
+            <img class="hero-logo" src="<%- url_for("/images/github.png") %>">
+          </a>
+        </li>
+      </ul>
+    </div>
+    <% } %>
+  </div>
+  <div class="Copyright">
+    <p>
+      Copyright ©2021 QinGah Dev LTD All Rights Reserved
+    </p>
+  </div>
+
+</div>
+
+
+<script>
+  (function () {
+    var topScrolled = false
+    var sponsors = document.getElementById('highlights')
+    var sponsorTop = sponsors.offsetTop
+    var sponsorActive = false
+
+    window.addEventListener('resize', function () {
+      sponsorTop = sponsors.offsetTop
+    })
+
+    window.addEventListener('scroll', function () {
+      if (window.pageYOffset > 165 && !topScrolled) {
+        topScrolled = true
+        document.getElementById('mobile-bar').classList.remove('top')
+      } else if (window.pageYOffset <= 165 && topScrolled) {
+        topScrolled = false
+        document.getElementById('mobile-bar').classList.add('top')
+      }
+      if (window.pageYOffset > sponsorTop - 100) {
+        if (!sponsorActive) {
+          sponsorActive = true
+          sponsors.classList.add('active')
+        }
+      } else {
+        if (sponsorActive) {
+          sponsorActive = false
+          sponsors.classList.remove('active')
+        }
+      }
+    })
+  })()
+</script>

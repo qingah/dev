@@ -1,0 +1,27 @@
+index:
+  title: 开发者社区
+
+menu:
+  home: 主页
+  guidelines: Swap
+  api: 接口手册
+  community: 社区
+
+submenu:
+  introduction: 简介&Design
+  start: 项目规划
+  tutorials: 使用教程
+  economic: 合约 API
+  security: 接入指南
+
+main:
+  title: QinGah 开发者社区
+  text: QinGahSwap 基于ZK-Rollups的Swap+AMM隐私兑换计算DApp
+  uibutton: UI设计
+
+content:
+  rpc: RPC API
+
+footer:
+  contact: 联系我们
+  text: QinGah 开发者社区
