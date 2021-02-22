@@ -2,7 +2,7 @@
 title: DPOS投票节点加入网络
 type: tutorials
 language: zh-cn
-order: 401
+order: 402
 ---
 
 上一章中，我们介绍了 DPOS 的节点网络。这一章中，我们将加入其中，成为一个节点，亲身体会区块链网络的魅力。
