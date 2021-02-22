@@ -42,7 +42,7 @@ let result = qingah_client.dpos.exchange(accountId, amountA, tokenA, amountB, to
 | price| 价格(仅在 uniswap 限价交易中填值) |
 | id | 渠道商 id (仅在 uniswap 交易中使用) |
 
-**需要说明的是，在 Bancor 兑换中，`to` 填入目标令牌为0的值，假设我需要兑换 FO，则填入`0.0000 ATP`；`price`填`0.0`；`id`填`owner`即可。**
+**需要说明的是，在 Bancor 兑换中，`to` 填入目标令牌为0的值，假设我需要兑换 ATP，则填入`0.0000 ATP`；`price`填`0.0`；`id`填`owner`即可。**
 
 假设用户 `atp1t88x1...` 发行了一个智能令牌叫做 `aBTC` ，用户 `atp1t88x2...` 发行了一个叫做了 `bETH` 的智能令牌。那么用户 `atp1t88x1...` 想要用 `aBTC` 兑换得到一定数量的 `bETH` 是怎么实现的呢？调用接口 `exchange` 接口进行兑换。
 

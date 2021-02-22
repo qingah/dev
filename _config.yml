@@ -82,5 +82,5 @@ theme: qingah
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repository: git@github.com:qingah/dev.git
+  repository: https://github.com/qingah/dev.git
   branch: gh-pages

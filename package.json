@@ -21,6 +21,7 @@
   "scripts": {
     "start": "hexo server",
     "publish": "hexo generate",
-    "deploy": "hexo deploy"
+    "deploy": "hexo deploy",
+    "clean": "hexo clean"
   }
 }
