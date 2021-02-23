@@ -1,11 +1,11 @@
 ---
-title: DPOS投票节点加入网络
+title: Dpos voting nodes join the network
 type: tutorials
-language: zh-cn
+language: en
 order: 402
 ---
 
-上一章中，我们介绍了 DPOS 的节点网络。这一章中，我们将DPOS投票节点加入网络。
+Not yet
 
 ## swap-nodes
 
@@ -13,14 +13,14 @@ swap-nodes 是由 QinGah 社区提供的一款快速启动 DPOS投票节点 加�
 
 项目地址：https://github.com/qingah/swap-nodes
 
-### 安装
+### Install
 
 ```
 git clone https://github.com/qingah/swap-nodes.git
 cd swap-nodes
 ```
 
-### 启动
+### Starting
 
 ```
 node dpos.js   // 快速启动一个dpos节点

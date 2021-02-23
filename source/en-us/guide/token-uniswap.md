@@ -1,17 +1,17 @@
 ---
 title: uniswap
 type: tutorials
-language: zh-cn
+language: en
 order: 250
 ---
 
-## uniswap 充值
-> 将链上原生令牌ATP或ARC20充值到合约。
+## uniswap deposit
+> Recharge the native token ATP or arc20 on the chain to the contract.
 
-#### 调用例子:
+#### Call example:
 
 ```javascript
-  // 充值ATP
+  // Deposit ATP
   const mainContract = "atpcontract...";
   const account = "atpmyaddress..."
   const Web3 = require('web3')
@@ -45,15 +45,17 @@ order: 250
   const res = await contract.methods.depositATP(account).call()
 
 
-  // 充值令牌，按转账方法直接转到
+  // Recharge token, according to ARC20 token the transfer method directly to contract
   const resp = contract.transfer(amount, mainContract).call()
 
 ```
-## uniswap 交易
-> 在 uniswap 的所有接口中，tokena 与 tokenb 的顺序并不影响执行结果。例如，`ATP - USDT`和`USDT - ATP`属于同一个市场。
-### 增加流动性
+## uniswap exchange
+> In all interfaces of uniswap, the order of token a and token B does not affect the execution result. For example, `ATP-USDT` and `USDT-ATP` belong to the same market.
 
-整个兑换过程是在 DPOS 程序执行，所以是首先调用钱包插件对交易方法和参数进行签名，然后发送到DPOS推送服务程序。
+### Add liquidity
+
+The whole exchange process is executed in the dpos program, so the wallet plug-in is first called to sign the transaction method and parameters, and then sent to the dpos push service program.
+
 
 ```javascript
 
@@ -62,7 +64,7 @@ var qingah_client = new QinGah();
 
 ```
 
-#### 调用方法:
+#### Call method:
 
 ```javascript
 let result = await qingah_client.dpos.addLiquidity(liquidityID, 
@@ -73,13 +75,13 @@ let result = await qingah_client.dpos.addLiquidity(liquidityID,
   );
 ```
 
-#### 方法说明:
+#### Method statement:
 
-使用 `addLiquidity()` 方法，可以为 uniswap 市场进行加仓，特殊的，如果没有该市场，则会创建该市场。
+Use `addLiquidity()` method，You can add positions for the uniswap market. In particular, if there is no such market, the market will be created.
 
-#### 参数说明:
+#### Parameter description:
 
-| 参数     | 含义             |
+| params     | description             |
 | -------- | ---------------- |
 | liquidityID | 流动对ID liquidity_a_b    |
 | amountADesired | 期望得到的 A amount uint    |
@@ -152,21 +154,21 @@ qingah.api.getSwappoolRows("liquidity_a_b") // 此处的"0"对应的对应币币
 
 在该市场中，有两个持仓者，分别为`aptuser1...`和`aptuser2...`。他们在总市场中的权重分别为`11356.56329871202615323`和`493.33121558640181092`。
 
-### 提回流动性
+### Remove Liquidity
 
-**调用方法:**
+**Call method:**
 
 ```javascript
 let result = await qingah_client.dpos.removeLiquidity(liquidityID, rate, amountAMin, amountBMin, to, nonce, accountId, feeA, feeB);
 ```
 
-**方法说明:**
+**Method statement:**
 
-使用 `removeLiquidity()` 方法，可以在特定的 uniswap 市场中进行提仓，提出我们在该 uniswap 市场中的份额。
+Use `removeLiquidity()` method, which can be used to raise positions in a specific uniswap market and put forward our share in the uniswap market.
 
 **参数说明:**
 
-| 参数     | 含义             |
+| 参数     | description            |
 | -------- | ---------------- |
 | liquidityID | 流动对ID liquidity_a_b |
 | rate | 提回流动性rate    |
@@ -178,7 +180,7 @@ let result = await qingah_client.dpos.removeLiquidity(liquidityID, rate, amountA
 | feeA |  feeA    |
 | feeB |  feeB    |
 
-#### 限制：
+#### Limit：
 
 - $0<rate\leq1$。否则报错。
 - 该`uniswap`必须存在。否则报错。
@@ -194,7 +196,7 @@ qingah_client.dpos.removeLiquidity('liquidity_0_1', 0.5, 0.4975, 0.995, 'aptcont
 在上面的例子中，我们在`ATP-USDT`的 uniswap 市场进行提仓，比例为`0.1`。操作过后，我们会按`个人权重/总权重 * rate`的比例等比得提取该市场中`ATP`令牌数量和`USDT`令牌数量。
 
 
-#### 公式说明：
+#### Formula description：
 
 在 `uniswap`市场中，用户所拥有的`token`份额以权重的形式展示。在减仓的时候**不能**设置提取某一个数额的`token`出来，只能设置提取的比例，按照对应的比例获得对应的币币对。详细公式见下：
 
@@ -210,22 +212,23 @@ a\times{b}=S\\
 $$
 {% endraw %}
 
-### 市价交易\限价交易
+### Market trading and limit trading
 
-uniswap 的市价交易、限价交易和 Bancor 共用`exchange`接口。
-| 参数     | 含义             |
+uniswap Market trading, limit trading and Bancor share the `exchange` interface.
+
+| Params     | description            |
 | -------- | ---------------- |
-| accountId    | 操作账户id        |
-| amountA | 兑换令牌数量     |
-| tokenA | 兑换令牌     |
-| amountB | 兑换令牌目标数量 |
-| tokenB | 兑换目标令牌    |
-| price | 价格(仅在 uniswap 限价交易中填值) |
-| id | 渠道商 id (仅在 uniswap 交易中使用) |
+| accountId    | account id        |
+| amountA | exchange token amount     |
+| tokenA |  exchange token     |
+| amountB | exchange target token amount |
+| tokenB | exchange target token   |
+| price | price (only in uniswap limit exchange used) |
+| id | Channel business id (only in uniswap exchange used) |
 
-#### 限制
+#### Limit
 
-- `bancor` 交易和 `uniswap`共用一个接口，**互为`bancor`交易对的不可以做`uniswap`交易**。否则报错。
+- `bancor` exchange和 `uniswap` share the same interface，**If they are `Bancor` trading pairs, they can't do `uniswap` trading**.Otherwise, an error will be reported.
 
 - 在市价交易的时候，**`amountA`的值必须不为0，`amountB`和`price`的值必须为0**。否则报错。
 - 在限价交易的时候，**`price`的价值必须不为0，`amountA`和`amountB`二者必须有且只一个值**。否则报错。
@@ -268,36 +271,36 @@ qingah.getSwaporderRows()
 }
 ```
 
-### 撤单
-**调用方法:**
+### Cancel order
+**Call method:**
 
 ```javascript
 let result = qingah_client.dpos.withdraw(name, symbola, symbolb, bid_id);
 ```
 
-**方法说明:**
+**Method statement:**
 
-使用 `withdraw()` 方法，可以在 uniswap 市场撤销自己的挂单。
+Use `withdraw()` method, you can cancel your registration in uniswap market
 
-**参数说明:**
+**Parameter description**
 
-| 参数     | 含义             |
+| Params     | description            |
 | -------- | ---------------- |
-| owner    | 撤单账号         |
-| symbola | a 令牌   |
-| symbolb|  b 令牌   |
-| bid_id|  撤单id   |
+| accountId    | cancel accountid         |
+| symbola | a token   |
+| symbolb|  b token   |
+| bid_id|  cancel id   |
 
 ```javascript
 ...
-let result = cqingah_client.dpos.tx.withdraw("atpaddress...", 0,  0,  bid_id);
+let result = await cqingah_client.dpos.tx.withdraw("atpaddress...", 0,  0,  bid_id);
 ```
-撤单会撤销用户的此 ID 的挂单，挂单金额打回账户
+Cancellation will cancel the user's registration with this ID, and the amount of registration will be returned to the account
 
-## uniswap 提现
-> 直接调用合约自行提现。
+## uniswap Withdraw
+> Directly call the contract to withdraw cash.
 
-#### 调用合约:
+#### Call contract:
 
 ```javascript
   const mainContract = "atpcontract...";

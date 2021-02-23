@@ -299,7 +299,7 @@ curl --request POST \
 
 ### find_order
 
-根据订单列表。
+返回订单列表。
 
 ```
 POST http://api.qingah.com/v1/graphql

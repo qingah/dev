@@ -11,20 +11,20 @@ order: 1
 
 ### getLiquidityRows
 
-返回流动池对。
+Returns the liquidity pool pairs.
 
 ```
 GET http://api.qingah.com/v1/api/getLiquidityRows
 ```
 
-示例：
+Examples：
 
 ```
 curl --request GET \
   --url  http://api.qingah.com/v1/api/getLiquidityRows
 ```
 
-执行结果：
+Results of enforcement：
 
 ```
 {
@@ -48,20 +48,20 @@ curl --request GET \
 
 ### getSwappoolRows
 
-返回Swap池底仓填充列表。
+Return to the Swap pool bottom bin fill list.
 
 ```
 GET http://api.qingah.com/v1/api/getSwappoolRows
 ```
 
-示例：
+Examples：
 
 ```
 curl --request GET \
   --url  http://api.qingah.com/v1/api/getSwappoolRows
 ```
 
-执行结果：
+Results of enforcement：
 
 ```
 {
@@ -81,13 +81,13 @@ curl --request GET \
 
 ### tokenpair
 
-返回包含交易对数据列表。
+Returns a list of data containing transaction pairs.
 
 ```
 POST http://api.qingah.com/v1/tokenpair/batchgetSwapRankOnChain
 ```
 
-示例：
+Examples：
 
 ```
 curl --request POST \
@@ -95,13 +95,13 @@ curl --request POST \
   --data '{"tokenpairs":["USDT@atp../ETH@atp..","ATP@atp.../USDT@atp..."]}'
 ```
 
-**主体参数**
+**Main parameters**
 
-| 参数                | 类型   | 描述                                     |          |
+| params                | types   | description                                    |          |
 | ------------------- | ------ | ---------------------------------------- | -------- |
 | **tokenpairs** | array[string] | 交易对数组 | REQUIRED |
 
-执行结果：
+Results of enforcement：
 
 ```
 [
@@ -132,13 +132,13 @@ curl --request POST \
 
 ### getDepthmap
 
-返回包含交易对深度数据。
+Returns the depth data containing the transaction pair.
 
 ```
 POST http://api.qingah.com/v1/app/getDepthmap
 ```
 
-示例：
+Examples：
 
 ```
 curl --request POST \
@@ -146,16 +146,16 @@ curl --request POST \
   --data '{"tokena":"atp","tokenb":"usdt","limit":24}'
 ```
 
-**主体参数**
+**Main parameters**
 
-| 参数                | 类型   | 描述                                     |          |
+| params                | type   | description                                    |          |
 | ------------------- | ------ | ---------------------------------------- | -------- |
 | **tokena** | string | A令牌 | REQUIRED |
 | **tokenb** | string | A令牌 | REQUIRED |
 | **limit** | int | 限制数 | REQUIRED |
 
 
-执行结果：
+Results of enforcement：
 
 ```
 {
@@ -200,13 +200,13 @@ curl --request POST \
 
 ### kdata
 
-返回包含交易对时间范围K线数据。
+Return the K-line data containing the transaction pair time range.
 
 ```
 POST http://api.qingah.com/v1/deal/kdata
 ```
 
-示例：
+Examples：
 
 ```
 curl --request POST \
@@ -214,16 +214,16 @@ curl --request POST \
   --data '{"duration":"24h","token_names":["ETH/USDT","ATP/USDT"],"stime":1613823575412,"etime":1613909975412}'
 ```
 
-**主体参数**
+**Main parameters**
 
-| 参数                | 类型   | 描述                                     |          |
+| params                | types   | description                                    |          |
 | ------------------- | ------ | ---------------------------------------- | -------- |
-| **duration** | string | 时间范围 y,m,w,d,h,m | REQUIRED |
-| **token_names** | array[string] | 交易对 | REQUIRED |
-| **stime** | timestamp | 开始时间戳 | REQUIRED |
-| **etime** | timestamp | 结束时间戳 | REQUIRED |
+| **duration** | string | Time range y,m,w,d,h,m | REQUIRED |
+| **token_names** | array[string] | deal for | REQUIRED |
+| **stime** | timestamp | Start timestamp | REQUIRED |
+| **etime** | timestamp | End timestamp | REQUIRED |
 
-执行结果：
+Results of enforcement：
 
 ```
 [
@@ -263,7 +263,7 @@ curl --request POST \
 ```
 POST http://api.qingah.com/v1/chain/get_balance
 ```
-示例：
+Examples：
 
 ```
 curl --request POST \
@@ -271,13 +271,13 @@ curl --request POST \
   --data '{"account_id": "5"}'
 ```
 
-**主体参数**
+**Main parameters**
 
-| 参数                | 类型   | 描述                                     |          |
+| params                | types   | description                                    |          |
 | ------------------- | ------ | ---------------------------------------- | -------- |
 | **account_id** | string | Provide a `account_id` | REQUIRED |
 
-执行结果：
+Results of enforcement：
 
 ```
 [
@@ -295,17 +295,17 @@ curl --request POST \
 
 ## GRAPHQL
 
-> 注意：需要按照需求自行定制查询
+> Note: you need to customize the query according to your needs.
 
 ### find_order
 
-根据订单列表。
+Return the order list.
 
 ```
 POST http://api.qingah.com/v1/graphql
 ```
 
-示例：
+Examples：
 
 ```
 curl --request POST \
@@ -363,13 +363,13 @@ curl --request POST \
   }`
 ```
 
-**主体参数**
+**Main parameters**
 
-| 参数           | 类型  |      |
+| params           | types  |      |
 | -------------- | ----- | ---- |
 | **data** | GRAPHQL | /    |
 
-执行结果：
+Results of enforcement：
 
 ```
 {
