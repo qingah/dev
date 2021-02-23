@@ -1,12 +1,10 @@
 ---
 title: 
 type: rpc
-language: zh-cn
+language: en
 order: 1
 ---
 # RPC API
-
-
 ## REST
 
 ### getLiquidityRows
@@ -99,7 +97,7 @@ curl --request POST \
 
 | params                | types   | description                                    |          |
 | ------------------- | ------ | ---------------------------------------- | -------- |
-| **tokenpairs** | array[string] | 交易对数组 | REQUIRED |
+| **tokenpairs** | array[string] | token pair array | REQUIRED |
 
 Results of enforcement：
 
