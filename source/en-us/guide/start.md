@@ -5,53 +5,55 @@ language: en
 order: 5
 ---
 
-合约工程师开发三个合约，代理合约、存储合约和业务逻辑合约。代理合约主要功能为迭代和更新合约，把权限多签授予给社区节点监督和审计，并可由社区和安全公司审核和批准。存储合约，为整个逻辑DApp的提供业务数据逻辑数据结构存储和计算(图示1，主要为MerkleTree为合约逻辑提供链上验证。业务合约功能为核心算法逻辑，提供链下压缩数据验证和多方计算。交付：测试链合约和可调式程序交互接口。 
+Contract engineer develops three contracts: agent contract, storage contract and business logic contract. The main function of the agent contract is to iterate and update the contract. The authority is multi signed to the community node for supervision and audit, and can be reviewed and approved by the community and the security company. Storage contract provides business data and logical data structure storage and calculation for the whole logical DAPP (Figure 1, mainly merkletree provides on Chain Verification for contract logic). The service contract function is the core algorithm logic, which provides compressed data verification and multi-party calculation under the chain.
 
-代码的目录结构：
+
+Directory structure of code：
 
 ```
 qingah-swap/
 ├── src
 │   ├── call.js  
-│   ├── initClient.js  // 连接文件
-│   ├── deploy.js  //加载、发布合约脚本文件
+│   ├── initClient.js  // init file
+│   ├── deploy.js  // deploy shell file
 │   ├── abi
-│   │   ├── qingah.abi  //合约abi文件
-│   │   └── qingah.sol  // 合约代码文件
+│   │   ├── qingah.abi  // abi
+│   │   └── qingah.sol  // sol file
 │   └── package.json
 └── server
     └── node.js
 ```
 
-## 部署节点
+## Deployment node
 
-**开启RPC服务**
+**Start RPC service**
 
-部署Alaya节点和增加业务所需的数据API功能服务
+- Deploy Alaya node and add data API function service required by business.
 
-制定初步业务订数据接口规范。
+- Formulate preliminary business data interface specification.
 
-## DAppUi
+## DApp Ui
 
-初步产品业务逻辑和界面功能展示
+Preliminary product business logic and interface function display.
 
 【[Draft](../ui/introduction.html#UI-设计)】
 
-## ZkSnark算法实现和交互代码库
+## Zksnark algorithm implementation and interactive code base
 
-【[代码库](http://github.com/qingah/zkroll)】
+【[Repository](http://github.com/qingah/zkroll)】
 
-## 代码合约
+## Code contract
 
-代理合约、存储合约和业务逻辑合约。
+Agent contract, storage contract and business logic contract.
 
-## DPOS投票批量打包程序
+## Dpos voting batch packer
 
-推送交易验证程序，实现方法为通过拍卖确定一个排序者，如果该行为人表现不佳，那么代币持有者可以通过投票将其驱逐，并发起新的拍卖。
+The implementation method of push transaction verification program is to determine a sequencer by auction. If the actor does not perform well, the token holder can vote to expel him and initiate a new auction.
 
-## 后端业务API
+## Backend API
 
-为前端提供速度和优化的API接口。
+Provide speed and optimized API interface for front end.
 
-本章项目规划，下面为大家Swap使用教程可以在【[教程](./tutorials-instructions.html)】章节中查阅。
+This chapter project planning, the following for you to use swap tutorial, you can refer to in 【[Guide](./tutorials-instructions.html)】.
+
 
