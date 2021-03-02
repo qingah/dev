@@ -40,7 +40,7 @@ Preliminary product business logic and interface function display.
 
 ## Zksnark algorithm implementation and interactive code base
 
-【[Repository](http://github.com/qingah/zkroll)】
+【[Repository](http://github.com/qingah/zkDpos)】
 
 ## Code contract
 

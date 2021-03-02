@@ -39,7 +39,7 @@ qingah-swap/
 
 ## ZkSnark算法实现和交互代码库
 
-【[代码库](http://github.com/qingah/zkroll)】
+【[代码库](http://github.com/qingah/zkDpos)】
 
 ## 代码合约
 
