@@ -37,7 +37,7 @@ The interface supports both Bancor protocol and uniswap protocol.
 
 | Params     | Description             |
 | -------- | ---------------- |
-| accountId    | Exchange account number |
+| accountId    | Exchange account Id |
 | amountA | Number of tokens exchanged    |
 | tokenA | Exchange token     |
 | amountB| Target number of exchange token |
@@ -45,7 +45,7 @@ The interface supports both Bancor protocol and uniswap protocol.
 | price| Price (only fill in the value in uniswap price limit transaction) |
 | id | Channel ID (only used in uniswap transactions) |
 
-**It should be noted that in Bancor exchange, ` to 'fills in the value of 0 for the target Token. Assuming that I need to exchange ATP, I can fill in' 0.0000 ATP ','price' fills in '0.0','id 'fills in' owner '.**
+**It should be noted that in Bancor exchange, `to` fills in the value of 0 for the target Token, assuming that I need to exchange ATP, I can fill in `0.0000 ATP`,`price` fills in `0.0`, `id` fills in `owner`.**
 
 Suppose that the user `atp1t88x1...` issues a smart token called `ABTC`, and the user `atp1t88x2...` issues a smart token called ` BETH `. So how does the user `atp1t88x1...` want to get a certain amount of `BETH` with `ABTC`? Call the exchange interface to exchange.
 
