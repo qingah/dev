@@ -151,7 +151,7 @@ curl --request POST \
 | 参数                | 类型   | 描述                                     |          |
 | ------------------- | ------ | ---------------------------------------- | -------- |
 | **tokena** | string | A令牌 | REQUIRED |
-| **tokenb** | string | A令牌 | REQUIRED |
+| **tokenb** | string | B令牌 | REQUIRED |
 | **limit** | int | 限制数 | REQUIRED |
 
 

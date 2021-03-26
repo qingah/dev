@@ -58,7 +58,7 @@ let ctx = qingah_client.contract('qingah-swap');
 let result = ctx.exchange('atp1t88x1...', 'atpaBTC...', 'atpbETH...', 1.0000, 0.0000, '0.0', 'atp1t88x2...');
 ```
 
-If you want to exchange for the `bETh` token in `QinGah`, you just need to exchange `0.0000 a ETH` for `0.0000 bETH`.
+If you want to exchange for the `bETH` token in `QinGah`, you just need to exchange `0.0000 a ETH` for `0.0000 bETH`.
 
 ## uniswap exchange
 

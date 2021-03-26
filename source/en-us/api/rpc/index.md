@@ -148,9 +148,9 @@ curl --request POST \
 
 | params                | type   | description                                    |          |
 | ------------------- | ------ | ---------------------------------------- | -------- |
-| **tokena** | string | A令牌 | REQUIRED |
-| **tokenb** | string | A令牌 | REQUIRED |
-| **limit** | int | 限制数 | REQUIRED |
+| **tokena** | string | AToken | REQUIRED |
+| **tokenb** | string | BToken | REQUIRED |
+| **limit** | int | Limit | REQUIRED |
 
 
 Results of enforcement：
@@ -256,7 +256,7 @@ Results of enforcement：
 
 ### get_balance
 
-返回链上AccountID的token balances。
+Return chain AccountID's token balances.
 
 ```
 POST http://api.qingah.com/v1/chain/get_balance
