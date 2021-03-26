@@ -27,36 +27,38 @@ var qingah_client = new QinGah();
 let result = qingah_client.dpos.exchange(accountId, amountA, tokenA, amountB, tokenB, price, id);
 ```
 
-**方法说明:**
+**Method statement:**
 
-使用 `exchange()` 方法，在 QinGah 使用 Bancor / uniswap 进行令牌之间兑换
+Using the `exchange()` method, qingah uses Bancor / uniswap to exchange tokens.
 
-该接口既支持 Bancor 协议，也支持 uniswap 协议。
+The interface supports both Bancor protocol and uniswap protocol.
 
-**参数说明:**
+**Parameter description:**
 
 | Params     | Description             |
 | -------- | ---------------- |
-| accountId    | 兑换账号         |
-| amountA | 兑换令牌数量     |
-| tokenA | 兑换令牌数量     |
-| amountB| 兑换令牌目标数量 |
-| tokenB | 兑换目标令牌     |
-| price| 价格(仅在 uniswap 限价交易中填值) |
-| id | 渠道商 id (仅在 uniswap 交易中使用) |
+| accountId    | Exchange account number |
+| amountA | Number of tokens exchanged    |
+| tokenA | Exchange token     |
+| amountB| Target number of exchange token |
+| tokenB | Exchange target Token     |
+| price| Price (only fill in the value in uniswap price limit transaction) |
+| id | Channel ID (only used in uniswap transactions) |
 
-**需要说明的是，在 Bancor 兑换中，`to` 填入目标令牌为0的值，假设我需要兑换 ATP，则填入`0.0000 ATP`；`price`填`0.0`；`id`填`owner`即可。**
+**It should be noted that in Bancor exchange, ` to 'fills in the value of 0 for the target Token. Assuming that I need to exchange ATP, I can fill in' 0.0000 ATP ','price' fills in '0.0','id 'fills in' owner '.**
 
-假设用户 `atp1t88x1...` 发行了一个智能令牌叫做 `aBTC` ，用户 `atp1t88x2...` 发行了一个叫做了 `bETH` 的智能令牌。那么用户 `atp1t88x1...` 想要用 `aBTC` 兑换得到一定数量的 `bETH` 是怎么实现的呢？调用接口 `exchange` 接口进行兑换。
+Suppose that the user `atp1t88x1...` issues a smart token called `ABTC`, and the user `atp1t88x2...` issues a smart token called ` BETH `. So how does the user `atp1t88x1...` want to get a certain amount of `BETH` with `ABTC`? Call the exchange interface to exchange.
+
+
 
 ```javascript
-// 初始化 QinGah 客户端
+// Init QinGah client
 ...
 let ctx = qingah_client.contract('qingah-swap');
 let result = ctx.exchange('atp1t88x1...', 'atpaBTC...', 'atpbETH...', 1.0000, 0.0000, '0.0', 'atp1t88x2...');
 ```
 
-如果想要兑换成 `QinGah` 中的 `bETH` 令牌，那么只需将 `0.0000 aETH` 换成 `0.0000 bETH` 即可。
+If you want to exchange for the `bETh` token in `QinGah`, you just need to exchange `0.0000 a ETH` for `0.0000 bETH`.
 
 ## uniswap exchange
 
@@ -65,4 +67,4 @@ let result = ctx.exchange('atp1t88x1...', 'atpaBTC...', 'atpbETH...', 1.0000, 0.
 
 ## One click exchange of wallet
 
-[下载 QinGah 钱包](https://wallet.qingah.com/) ，先选择你要兑换的源智能令牌，输入要兑换的数量，再选择你要兑换的目标令牌，点击兑换，稍等片刻即可兑换成功。
+[Download QinGah Wallet](https://wallet.qingah.com/). First select the source smart token you want to redeem, enter the quantity you want to redeem, then select the target token you want to redeem, click redeem, and wait for a moment to redeem successfully.

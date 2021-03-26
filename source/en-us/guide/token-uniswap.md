@@ -83,34 +83,34 @@ Use `addLiquidity()` method，You can add positions for the uniswap market. In p
 
 | params     | description             |
 | -------- | ---------------- |
-| liquidityID | 流动对ID liquidity_a_b    |
-| amountADesired | 期望得到的 A amount uint    |
-| amountBDesired|  期望得到的 B amount uint   |
-| amountAMin|  最小 A amount uint   |
-| amountBMin|  最小 B amount uint   |
-| to    |  流动对 address    |
-| nonce | 用户交易nonce  |
-| accountId|  用户address对应合约自增ID    |
+| liquidityID |  Liquidity pair ID liquidity_a_b    |
+| amountADesired | Expected A amount uint    |
+| amountBDesired|  Expected B amount uint   |
+| amountAMin|  The minimum A amount uint   |
+| amountBMin| The minimum B amount uint   |
+| to    |   Liquidity pair address    |
+| nonce | nonce  |
+| accountId|  Account Id    |
 | feeA |  feeA    |
 | feeB |  feeB    |
 
-#### 限制：
+#### Limit：
 
-以下所有的限制均不包含常规限制，例如权限不对，精度不对等。本文提到的限制都是特定的限制。
+All the following restrictions do not include general restrictions, such as incorrect permissions and unequal precision. The restrictions mentioned in this article are specific.
 
-- 已成为`bancor`交易市场的，不能再成为`uniswap`的交易市场。否则报错。
-- 加仓后正负价格不能超过 0.1%。否则报错。
-- 加仓后个人权重增加必须大于0。否则报错。
+- What has become a `Bancor` market can no longer be a `uniswap` market. Otherwise, an error will be reported.
+- The positive and negative prices after the increase in the warehouse shall not exceed 0.1%. Otherwise, an error will be reported.
+- Personal weight increase must be greater than 0 after position increase. Otherwise, an error will be reported.
 
-该行为会对 A-B 的 uniswap 令牌市场进行加仓，如果该市场不存在，则会创建该市场。
+This behavior will add positions to the uniswap token market of a-b. if the market does not exist, it will create the market.
 
 ```javascript
 ...
 let result = qingah_client.addLiquidity("liquidity_0_1", 1, 2, 0.995, 1.99, to, 1, 0, 0);
 ```
-在上面的例子中，我们为`ATP-USDT`的 uniswap 市场进行加仓，数额分别是`1.0000 ATP`和`2.0000 USDT`。同样的，如果没有该市场，则会创建`ATP-USDT`的 uniswap 市场。
+In the above example, we have increased positions for the uniswap market of `ATP-USDT`, with the amounts of `1.0000 ATP` and `2.0000 USDT` respectively. Similarly, if there is no such market, the `ATP-USDT` uniswap market will be created.
 
-#### 市场份额表查询：
+#### Market share table query：
 ```javascript
 qingah_client.api.getLiquidityRows()
 // output:
@@ -134,7 +134,7 @@ qingah_client.api.getLiquidityRows()
 ```
 
 ```js
-qingah.api.getSwappoolRows("liquidity_a_b") // 此处的"0"对应的对应币币对的 primary
+qingah.api.getSwappoolRows("liquidity_a_b") // The "0" here corresponds to the corresponding currency pair primary
 // output:
 {
   "rows": [
@@ -150,10 +150,9 @@ qingah.api.getSwappoolRows("liquidity_a_b") // 此处的"0"对应的对应币币
   "more": false
 }
 ```
-上例的情况是，`USDT-ATP`的`uniswap`的市场中，`USDT`的总额为`10030.0000 APT`，`ATP`的总额为`140.0000 FO`，所有持仓者总权重为`11849.89451429842847574`。
+In the case of the above example, in the `uniswap` market of `USDT-ATP`, the total amount of `USDT` is `10030.0000 ATP`, the total amount of  `ATP` is `140.0000 ATP`, and the total weight of all positions is `11849.89451429842847574`.
 
-在该市场中，有两个持仓者，分别为`aptuser1...`和`aptuser2...`。他们在总市场中的权重分别为`11356.56329871202615323`和`493.33121558640181092`。
-
+There are two positions in the market, one is "aptuser1..." and the other is "aptuser2...". Their weight in the total market is `11356.56329871202615323` and `493.33121558640181092`.
 ### Remove Liquidity
 
 **Call method:**
@@ -166,48 +165,50 @@ let result = await qingah_client.dpos.removeLiquidity(liquidityID, rate, amountA
 
 Use `removeLiquidity()` method, which can be used to raise positions in a specific uniswap market and put forward our share in the uniswap market.
 
-**参数说明:**
+**Parameter description:**
 
-| 参数     | description            |
+| Params     | description            |
 | -------- | ---------------- |
-| liquidityID | 流动对ID liquidity_a_b |
-| rate | 提回流动性rate    |
-| amountAMin | 最小 A amount uint  |
-| amountBMin | 最小 B amount uint  |
-| nonce | 用户交易nonce  |
-| to    |  流动对 address    |
-| accountId|  用户address对应合约自增ID    |
+| liquidityID | Liquidity pair ID liquidity_a_b |
+| rate | Remove of liquidity rate    |
+| amountAMin | The minimum A amount uint  |
+| amountBMin | The minimum B amount uint  |
+| nonce | nonce  |
+| to    |  Liquidity pair address    |
+| accountId|  address ID    |
 | feeA |  feeA    |
 | feeB |  feeB    |
 
 #### Limit：
 
-- $0<rate\leq1$。否则报错。
-- 该`uniswap`必须存在。否则报错。
-- 该用户在该`uniswap`市场中必须拥有份额。否则报错。
-- 用户提取出来的`token`数必须大于该币种的最小精度。否则报错。
-- 用户提取结束后剩余的权重必须大于总权重部分的0.1%。否则报错。
+- `0<rate<1`. Otherwise, an error will be reported.
+- The `uniswap` must exist. Otherwise, an error will be reported.
+- The user must have a share in the `uniswap` market. Otherwise, an error will be reported.
+- The number of `tokens` extracted by the user must be greater than the minimum precision of the currency. Otherwise, an error will be reported.
+- After user extraction, the remaining weight must be greater than 0.1% of the total weight. Otherwise, an error will be reported.
 
-该行为会对 A-B 的 uniswap 令牌市场进行提仓，通过`rate`比例提出我们自己的令牌份额。
+This behavior will raise the position of A-B's uniswap token market and put forward our own token share through the `rate` ratio.
 ```javascript
 ...
 qingah_client.dpos.removeLiquidity('liquidity_0_1', 0.5, 0.4975, 0.995, 'aptcontractaddress', nonce, 1, 0, 0);
 ```
-在上面的例子中，我们在`ATP-USDT`的 uniswap 市场进行提仓，比例为`0.1`。操作过后，我们会按`个人权重/总权重 * rate`的比例等比得提取该市场中`ATP`令牌数量和`USDT`令牌数量。
+In the above example, we raised our position in the uniswap market of `ATP-USDT`, with a ratio of `0.1`. After the operation, we will extract the number of `ATP` tokens and `USDT` tokens in the market according to the proportion of 'individual weight / total weight * rate'
+
 
 
 #### Formula description：
 
-在 `uniswap`市场中，用户所拥有的`token`份额以权重的形式展示。在减仓的时候**不能**设置提取某一个数额的`token`出来，只能设置提取的比例，按照对应的比例获得对应的币币对。详细公式见下：
+In the `uniswap` market, the user's share of `token` is displayed in the form of weight. When reducing positions * * can't * * set the 'token' of a certain amount to be extracted, only the extraction proportion can be set, and the corresponding currency pair can be obtained according to the corresponding proportion. The detailed formula is as follows:
+
 
 {% raw %}
 $$
 \begin{gather}
 a\times{b}=S\\
-填仓:\; a_{new}\times{b_{new}}=S_{new}\\
-计算权重：\;\frac{\sqrt{S_{new}}-\sqrt{S}}{\sqrt{S}}\times{weights}\\
-减仓比例：\;r=\frac{weigehts_{个人}}{weights_{全部}}\times{rate}_{传入值}\\
-减仓提取：(a_{new}\times{r})\quad(b_{new}\times{r})
+Filling warehouse:\; a_{new}\times{b_{new}}=S_{new}\\
+Weight calculation：\;\frac{\sqrt{S_{new}}-\sqrt{S}}{\sqrt{S}}\times{weights}\\
+Reduction ratio：\;r=\frac{weigehts_{个人}}{weights_{全部}}\times{rate}_{传入值}\\
+Withdrawal from reduced warehouse：(a_{new}\times{r})\quad(b_{new}\times{r})
 \end{gather}
 $$
 {% endraw %}
@@ -230,27 +231,27 @@ uniswap Market trading, limit trading and Bancor share the `exchange` interface.
 
 - `bancor` exchange和 `uniswap` share the same interface，**If they are `Bancor` trading pairs, they can't do `uniswap` trading**.Otherwise, an error will be reported.
 
-- 在市价交易的时候，**`amountA`的值必须不为0，`amountB`和`price`的值必须为0**。否则报错。
-- 在限价交易的时候，**`price`的价值必须不为0，`amountA`和`amountB`二者必须有且只一个值**。否则报错。
-- 该`uniswap`市场必须存在。负责报错。
-- 用户兑换出来的`token`数必须大于该币种的最小精度。否则报错。
+- In the market price transaction, the value of * * `amountA` must not be 0, and the values of `amountA` and `price` must be 0 * *. Otherwise, an error will be reported.
+- In a price limit transaction, the value of * * price must not be zero, and both `amountA` and 'amountb' must have one and only one value * *. Otherwise, an error will be reported.
+- The 'uniswap' market must exist. Responsible for reporting errors.
+- The number of `tokens` exchanged by the user must be greater than the minimum precision of the currency. Otherwise, an error will be reported.
 
-市价交易：
+Market exchange:
 ```javascript
-// 初始化 DPOS 客户端
 ...
 qingah_client.dpos.exchange(1, '200.000000', 'aUSDT', 0, 'ATP', 0, 0);
 ```
-上面的例子中，用户id`1`想用`200.000000 aUSDT`兑换`ATP`，不论价格是多少，兑换完`200.000000 aUSDT`为止。
+In the above example, the user ID `1` wants to exchange `200.000000 aUSDT` for `ATP`. No matter how much the price is, the exchange will last until `200.000000 aUSDT` is finished.
 
-限价交易：
+
+Limit exchange:
 ```javascript
 ...
 qingah_client.dpos.exchange(1, "0.0000000", "aUSDT", "100.00000000", "ATP", 1.2, 0);
 ```
-上面的例子中，用户id`1`需要以不高于`1.2`的价格兑换出`100.00000000 ATP`。对于高于`1.2`的价格，仍未兑换完的部分，则会挂单。
+In the above example, user ID `1` needs to exchange '100 million ATP' at a price no higher than `1.2`. If the price is higher than `1.2', the part that has not been exchanged will be charged.
 
-#### 挂单表查询示例：
+#### Example of list query：
 ```js
 qingah.getSwaporderRows()
 
