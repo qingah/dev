@@ -11,7 +11,8 @@ order: 251
 
 ## Token exchange
 
-整个兑换过程是在 DPOS 程序执行，所以是首先调用钱包插件对交易方法和参数进行签名，然后发送到DPOS推送服务程序。
+The whole exchange process is executed in the dpos program, so the wallet plug-in is first called to sign the transaction method and parameters, and then sent to the dpos push service program.
+
 
 ```javascript
 
