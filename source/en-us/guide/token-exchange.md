@@ -47,7 +47,7 @@ The interface supports both Bancor protocol and uniswap protocol.
 
 **It should be noted that in Bancor exchange, `to` fills in the value of 0 for the target Token, assuming that I need to exchange ATP, I can fill in `0.0000 ATP`,`price` fills in `0.0`, `id` fills in `owner`.**
 
-Suppose that the user `atp1t88x1...` issues a smart token called `ABTC`, and the user `atp1t88x2...` issues a smart token called ` BETH `. So how does the user `atp1t88x1...` want to get a certain amount of `BETH` with `ABTC`? Call the exchange interface to exchange.
+Suppose that the user `atp1t88x1...` issues a smart token called `aBTC`, and the user `atp1t88x2...` issues a smart token called ` bETH `. So how does the user `atp1t88x1...` want to get a certain amount of `bETH` with `aBTC`? Call the exchange interface to exchange.
 
 
 
